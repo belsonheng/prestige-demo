@@ -151,23 +151,23 @@ export default {
   name: 'platform',
   methods: {
     open(platform) {
-      document.querySelector(`.${platform} .w3-modal`).style.display = 'block'
-      document.querySelector(`.${platform} .w3-modal textarea`).focus()
+      document.querySelector(`.${platform} .w3-modal`).style.display = 'block';
+      document.querySelector(`.${platform} .w3-modal textarea`).focus();
     },
     close(platform) {
-      document.querySelector(`.${platform} .w3-modal`).style.display = 'none'
-      document.querySelector(`.${platform} .w3-modal textarea`).value = ''
+      document.querySelector(`.${platform} .w3-modal`).style.display = 'none';
+      document.querySelector(`.${platform} .w3-modal textarea`).value = '';
     },
     populate(platform, text) {
-      document.querySelector(`.${platform} .w3-modal textarea`).value += text
-      document.querySelector(`.${platform} .w3-modal textarea`).focus()
+      document.querySelector(`.${platform} .w3-modal textarea`).value += text;
+      document.querySelector(`.${platform} .w3-modal textarea`).focus();
     },
   },
   mounted() {
     window.onclick = function(event) {
       if (event.target.classList.contains('w3-modal')) {
           event.target.style.display = 'none';
-          event.target.querySelector('textarea').value = ''
+          event.target.querySelector('textarea').value = '';
       }
     }
   }
@@ -189,6 +189,7 @@ textarea {
 }
 .platform {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
   height: 100%;
@@ -215,6 +216,11 @@ textarea {
 .platform > div button,
 .platform > div header {
   color: #ffffff;
+}
+.carousell,
+.grab,
+.shopee {
+  min-width: 420px;
 }
 .carousell h2,
 .carousell button,
