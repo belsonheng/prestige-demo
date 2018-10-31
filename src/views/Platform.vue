@@ -1,6 +1,6 @@
 <template>
   <div class="platform">
-    <div class="carousell">
+    <div class="carousell w3-animate-top">
       <h2>Carousell</h2>
       <ul class="w3-ul w3-large">
         <li class="w3-bar">
@@ -53,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div class="grab">
+    <div class="grab w3-animate-opacity">
       <h2>Grab</h2>
       <ul class="w3-ul w3-large">
         <li class="w3-bar">
@@ -98,7 +98,7 @@
         </div>
       </div>
     </div>
-    <div class="shopee">
+    <div class="shopee w3-animate-bottom">
       <h2>Shopee</h2>
       <ul class="w3-ul w3-large">
         <li class="w3-bar">
