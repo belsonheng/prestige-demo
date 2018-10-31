@@ -6,7 +6,7 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar1.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">Great seller to deal with.</span><br>
             <span class="w3-small">cookiemonster</span>
           </div>
@@ -14,7 +14,7 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar4.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">Pleasant transaction!</span><br>
             <span class="w3-small">bigbird</span>
           </div>
@@ -22,13 +22,15 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar5.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">Very friendly. Thank you :)</span><br>
             <span class="w3-small">elmo</span>
           </div>
         </li>
       </ul>
-      <button class="w3-button w3-round-large w3-hover-red" @click="open('carousell')">Write a new review</button>
+      <div class="button">
+        <button class="w3-button w3-round-large w3-hover-red" @click="open('carousell')">Write a new review</button>
+      </div>
       <div class="w3-modal">
         <div class="w3-modal-content w3-animate-left">
           <header class="w3-container">
@@ -59,7 +61,7 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar2.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">I love this super fast driver.</span><br>
             <span class="w3-small">haha5005</span>
           </div>
@@ -67,13 +69,15 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar1.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">Thank you!</span><br>
             <span class="w3-small">nothingtosay</span>
           </div>
         </li>
       </ul>
-      <button class="w3-button w3-round-large w3-hover-green" @click="open('grab')">Write a new review</button>
+      <div class="button">
+        <button class="w3-button w3-round-large w3-hover-green" @click="open('grab')">Write a new review</button>
+      </div>
       <div class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
           <header class="w3-container">
@@ -104,7 +108,7 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar3.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">Great seller to deal with.</span><br>
             <span class="w3-small">cookiemonster</span>
           </div>
@@ -112,13 +116,15 @@
         <li class="w3-bar">
           <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           <img src="../assets/avatar/img_avatar4.png" class="w3-bar-item w3-circle" style="width:85px">
-          <div class="w3-bar-item">
+          <div class="w3-bar-item w3-padding-small">
             <span class="w3-large">Very friendly. Thank you :)</span><br>
             <span class="w3-small">elmo</span>
           </div>
         </li>
       </ul>
-      <button class="w3-button w3-round-large w3-hover-orange" @click="open('shopee')">Write a new review</button>
+      <div class="button">
+        <button class="w3-button w3-round-large w3-hover-orange" @click="open('shopee')">Write a new review</button>
+      </div>
       <div class="w3-modal">
         <div class="w3-modal-content w3-animate-right">
           <header class="w3-container">
@@ -184,8 +190,9 @@ textarea {
   padding: 0.5em;
   outline: none;
   resize: none;
-  width: 350px;
-  height: 100px;
+  width: 100%;
+  height: 145px;
+  border: 1px solid #000000;
 }
 .platform {
   display: flex;
@@ -199,18 +206,18 @@ textarea {
   flex: 1;
   flex-direction: column;
   background-color: #f0f0f0;
-  border: 1px solid black;
+  border: 1px solid #000000;
 }
 .platform > div > h2 {
   padding: 7px;
   text-align: center;
   margin: 0 !important;
 }
-.platform > div > button {
+.button {
   position: absolute;
-  left: 20%;
   bottom: 7px;
-  width: 250px;
+  width: 100%;
+  text-align: center;
 }
 .platform > div > h2,
 .platform > div button,
@@ -221,6 +228,7 @@ textarea {
 .grab,
 .shopee {
   min-width: 420px;
+  min-height: 500px;
 }
 .carousell h2,
 .carousell button,
@@ -239,7 +247,9 @@ textarea {
 }
 .w3-modal-content {
   width: 30%;
-  height: 265px;
+  height: 65%;
+  min-width: 325px;
+  min-height: 310px;
 }
 .w3-tag {
   margin-top: 1em;
