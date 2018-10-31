@@ -157,25 +157,25 @@ export default {
   name: 'platform',
   methods: {
     open(platform) {
-      document.querySelector(`.${platform} .w3-modal`).style.display = 'block';
+      document.querySelector(`.${platform} .w3-modal`).style.display = "block";
       document.querySelector(`.${platform} .w3-modal textarea`).focus();
     },
     close(platform) {
-      document.querySelector(`.${platform} .w3-modal`).style.display = 'none';
-      document.querySelector(`.${platform} .w3-modal textarea`).value = '';
+      document.querySelector(`.${platform} .w3-modal`).style.display = "none";
+      document.querySelector(`.${platform} .w3-modal textarea`).value = "";
     },
     populate(platform, text) {
       document.querySelector(`.${platform} .w3-modal textarea`).value += text;
       document.querySelector(`.${platform} .w3-modal textarea`).focus();
-    },
+    }
   },
   mounted() {
     window.onclick = function(event) {
-      if (event.target.classList.contains('w3-modal')) {
-          event.target.style.display = 'none';
-          event.target.querySelector('textarea').value = '';
+      if (event.target.classList.contains("w3-modal")) {
+          event.target.style.display = "none";
+          event.target.querySelector("textarea").value = "";
       }
-    }
+    };
   }
 };
 </script>
@@ -249,7 +249,7 @@ textarea {
   width: 30%;
   height: 65%;
   min-width: 325px;
-  min-height: 310px;
+  min-height: 355px;
 }
 .w3-tag {
   margin-top: 1em;
