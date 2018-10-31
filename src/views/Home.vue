@@ -1,7 +1,6 @@
 <template>
   <div class="main">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <p>Main Page Here</p>
+    <img alt="Prestige logo" src="../assets/prestige.png">
   </div>
 </template>
 
@@ -31,5 +30,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.main {
+  background-color: #020202;
 }
 </style>
