@@ -17,43 +17,11 @@
       <div class="carousell w3-animate-top">
         <h2>Carousell</h2>
         <ul class="w3-ul w3-large">
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar1.png" class="w3-bar-item w3-circle" style="width:85px">
+          <li class="w3-bar" v-for="review in getCarousellReviews()">
+            <img :src="require(`@/assets/avatar/${review['avatar']}`)" class="w3-bar-item w3-circle">
             <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Great seller to deal with.</span><br>
-              <span class="w3-small">cookiemonster</span>
-            </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
-          </li>
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar4.png" class="w3-bar-item w3-circle" style="width:85px">
-            <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Pleasant transaction!</span><br>
-              <span class="w3-small">bigbird</span>
-            </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
-          </li>
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar5.png" class="w3-bar-item w3-circle" style="width:85px">
-            <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Very friendly. Thank you :)</span><br>
-              <span class="w3-small">elmo</span>
-            </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
-          </li>
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar4.png" class="w3-bar-item w3-circle" style="width:85px">
-            <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Pleasant transaction!</span><br>
-              <span class="w3-small">bigbird</span>
-            </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
-          </li>
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar4.png" class="w3-bar-item w3-circle" style="width:85px">
-            <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Pleasant transaction!</span><br>
-              <span class="w3-small">bigbird</span>
+              <span class="w3-large">{{ review['review'] }}</span><br>
+              <span class="w3-small">{{ review['author'] }}</span>
             </div>
             <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           </li>
@@ -80,7 +48,7 @@
               <textarea></textarea>
             </div>
             <footer class="w3-container">
-              <button class="w3-button w3-round-large w3-hover-red" @click="open('carousell')">Submit</button>
+              <button class="w3-button w3-round-large w3-hover-red" @click="addReview('carousell')">Submit</button>
             </footer>
           </div>
         </div>
@@ -88,19 +56,11 @@
       <div class="grab w3-animate-opacity">
         <h2>Grab</h2>
         <ul class="w3-ul w3-large">
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar2.png" class="w3-bar-item w3-circle" style="width:85px">
+          <li class="w3-bar" v-for="review in getGrabReviews()">
+            <img :src="require(`@/assets/avatar/${review['avatar']}`)" class="w3-bar-item w3-circle">
             <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">I love this super fast driver.</span><br>
-              <span class="w3-small">haha5005</span>
-            </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
-          </li>
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar1.png" class="w3-bar-item w3-circle" style="width:85px">
-            <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Thank you!</span><br>
-              <span class="w3-small">nothingtosay</span>
+              <span class="w3-large">{{ review['review'] }}</span><br>
+              <span class="w3-small">{{ review['author'] }}</span>
             </div>
             <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           </li>
@@ -127,7 +87,7 @@
               <textarea></textarea>
             </div>
             <footer class="w3-container">
-              <button class="w3-button w3-round-large w3-hover-green" @click="open('grab')">Submit</button>
+              <button class="w3-button w3-round-large w3-hover-green"  @click="addReview('grab')">Submit</button>
             </footer>
           </div>
         </div>
@@ -135,19 +95,11 @@
       <div class="shopee w3-animate-bottom">
         <h2>Shopee</h2>
         <ul class="w3-ul w3-large">
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar3.png" class="w3-bar-item w3-circle" style="width:85px">
+          <li class="w3-bar" v-for="review in getShopeeReviews()">
+            <img :src="require(`@/assets/avatar/${review['avatar']}`)" class="w3-bar-item w3-circle">
             <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Great seller to deal with.</span><br>
-              <span class="w3-small">cookiemonster</span>
-            </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
-          </li>
-          <li class="w3-bar">
-            <img src="../assets/avatar/img_avatar4.png" class="w3-bar-item w3-circle" style="width:85px">
-            <div class="w3-bar-item w3-padding-small">
-              <span class="w3-large">Very friendly. Thank you :)</span><br>
-              <span class="w3-small">elmo</span>
+              <span class="w3-large">{{ review['review'] }}</span><br>
+              <span class="w3-small">{{ review['author'] }}</span>
             </div>
             <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
           </li>
@@ -174,7 +126,7 @@
               <textarea></textarea>
             </div>
             <footer class="w3-container">
-              <button class="w3-button w3-round-large w3-hover-orange" @click="open('shopee')">Submit</button>
+              <button class="w3-button w3-round-large w3-hover-orange" @click="addReview('shopee')">Submit</button>
             </footer>
           </div>
         </div>
@@ -184,7 +136,9 @@
 </template>
 
 <script>
-import { db } from '../main'
+import { db } from '../firebase';
+
+var reviewsRef = db.ref('reviews');
 
 export default {
   name: 'platform',
@@ -194,11 +148,13 @@ export default {
       reviews: []
     }
   },
+  firebase: {
+    reviews: reviewsRef
+  },
   methods: {
     setName() {
       this.username = document.querySelector("span > .w3-modal input").value.trim() || "anonymous";
       document.querySelector("span > .w3-modal").style.display = "none";
-      // console.log(this.reviews);
     },
     open(platform) {
       document.querySelector(`.${platform} .w3-modal`).style.display = "block";
@@ -211,10 +167,37 @@ export default {
     populate(platform, text) {
       document.querySelector(`.${platform} .w3-modal textarea`).value += text;
       document.querySelector(`.${platform} .w3-modal textarea`).focus();
-    }
+    },
+    addReview(platform) {
+      var review = document.querySelector(`.${platform} .w3-modal textarea`).value.trim();
+      var author = this.username;
+      reviewsRef.push({
+        'review': review,
+        'author': author,
+        'avatar': `img_avatar${Math.floor(Math.random() * 5) + 1}.png`,
+        'platform': platform,
+        'timestamp': + new Date()
+      });
+      this.close(platform);
+    },
+    getCarousellReviews() {
+      return this.reviews.filter(function (review) {
+        console.log(review)
+        return review.platform == 'carousell'
+      });
+    },
+    getGrabReviews() {
+      return this.reviews.filter(function (review) {
+        return review.platform == 'grab'
+      });
+    },
+    getShopeeReviews() {
+      return this.reviews.filter(function (review) {
+        return review.platform == 'shopee'
+      });
+    },
   },
   mounted() {
-    console.log(db.ref('belson'));
     setTimeout(function() {
       document.querySelector("span > .w3-modal").style.display = "block";
       document.querySelector("span > .w3-modal input").focus()
@@ -306,6 +289,9 @@ span > .w3-modal button:hover {
   overflow: auto;
   max-width: 99%;
   max-height: 81%;
+}
+img.w3-circle {
+  width: 85px;
 }
 .carousell h2,
 .carousell button,
