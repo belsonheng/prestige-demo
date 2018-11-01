@@ -3,7 +3,7 @@
     <img class="w3-animate-bottom" alt="Prestige logo" src="../assets/prestige.png">
     <div class="links">
       <router-link to="/platform" target="_blank">
-        <h1 id="platform" class="w3-animate-right">goto: Platform demo</h1>
+        <h1 id="platform" class="w3-animate-right">goto: Partner demo</h1>
       </router-link>
       <router-link to="/profile" target="_blank">
         <h1 id="profile" class="w3-animate-left">goto: Profile demo</h1>
