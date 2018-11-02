@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <main>
     <img class="logo w3-animate-top" alt="Prestige logo" src="../assets/logo-black.png">
     <div class="links">
       <router-link to="/platform" target="_blank">
@@ -12,14 +12,14 @@
     <div class="tagline">
       <span class="w3-animate-bottom">Your <u>prestige</u>, Our <i>business</i>.</span>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 // @ is an alias to /src
 
 export default {
-  name: "home",
+  name: "home"
 };
 </script>
 
@@ -62,9 +62,14 @@ li {
   text-align: center;
   font-size: 80px;
 }
+@media screen and (max-device-width: 480px) {
+  .tagline {
+    font-size: 2em !important;
+  }
+}
 #platform {
   width: 350px;
-  background-color: #FFD700;
+  background-color: #ffd700;
 }
 #profile {
   width: 320px;
@@ -80,8 +85,7 @@ li {
   transition: width 0.2s ease;
 }
 #platform:hover,
-#profile:hover
-{
+#profile:hover {
   transition: width 0.3s ease;
   width: 420px;
 }

@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: '/prestige-demo/'
-}
+  baseUrl: "/prestige-demo/"
+};

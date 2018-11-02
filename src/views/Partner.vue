@@ -150,19 +150,21 @@ import { db } from "../firebase";
 var reviewsRef = db.ref("reviews");
 
 export default {
-  name: 'platform',
+  name: "platform",
   data() {
     return {
       username: null,
       reviews: []
-    }
+    };
   },
   firebase: {
     reviews: reviewsRef
   },
   methods: {
     setName() {
-      this.username = document.querySelector("span > .w3-modal input").value.trim() || "anonymous";
+      this.username =
+        document.querySelector("span > .w3-modal input").value.trim() ||
+        "anonymous";
       document.querySelector("span > .w3-modal").style.display = "none";
     },
     open(platform) {
@@ -178,14 +180,16 @@ export default {
       document.querySelector(`.${platform} .w3-modal textarea`).focus();
     },
     addReview(platform) {
-      var review = document.querySelector(`.${platform} .w3-modal textarea`).value.trim();
+      var review = document
+        .querySelector(`.${platform} .w3-modal textarea`)
+        .value.trim();
       var author = this.username;
       reviewsRef.push({
-        "review": review,
-        "author": author,
-        "avatar": `img_avatar${Math.floor(Math.random() * 5) + 1}.png`,
-        "platform": platform,
-        "timestamp": + new Date()
+        review: review,
+        author: author,
+        avatar: `img_avatar${Math.floor(Math.random() * 5) + 1}.png`,
+        platform: platform,
+        timestamp: +new Date()
       });
       this.close(platform);
     },
@@ -194,7 +198,7 @@ export default {
     },
     getCarousellReviews() {
       var reviews = this.reviews.filter(function(review) {
-        return review.platform == 'carousell';
+        return review.platform == "carousell";
       });
       return reviews.sort(function(a, b) {
         return b.timestamp - a.timestamp;
@@ -202,7 +206,11 @@ export default {
     },
     getGrabReviews() {
       var reviews = this.reviews.filter(function(review) {
-        return review.platform == 'grab' || review.platform == 'carousell' || review.platform == 'shopee';
+        return (
+          review.platform == "grab" ||
+          review.platform == "carousell" ||
+          review.platform == "shopee"
+        );
       });
       return reviews.sort(function(a, b) {
         return b.timestamp - a.timestamp;
@@ -210,7 +218,7 @@ export default {
     },
     getShopeeReviews() {
       var reviews = this.reviews.filter(function(review) {
-        return review.platform == 'shopee';
+        return review.platform == "shopee";
       });
       return reviews.sort(function(a, b) {
         return b.timestamp - a.timestamp;
@@ -224,19 +232,24 @@ export default {
     setTimeout(function() {
       document.querySelector("span > .w3-modal").style.display = "block";
       document.querySelector("span > .w3-modal input").focus();
-    }, 1000)
+    }, 1000);
     window.onclick = function(event) {
-      if (event.target.classList.contains("w3-modal") && event.target.id !== "prompt") {
-          event.target.style.display = "none";
-          event.target.querySelector("textarea").value = "";
+      if (
+        event.target.classList.contains("w3-modal") &&
+        event.target.id !== "prompt"
+      ) {
+        event.target.style.display = "none";
+        event.target.querySelector("textarea").value = "";
       }
     };
-    document.querySelector("span > .w3-modal input").addEventListener("keyup", function(event) {
-      event.preventDefault();
-      if (event.keyCode === 13) {
-        document.querySelector("span > .w3-modal button").click();
-      }
-    });
+    document
+      .querySelector("span > .w3-modal input")
+      .addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+          document.querySelector("span > .w3-modal button").click();
+        }
+      });
   }
 };
 </script>
@@ -247,7 +260,6 @@ li {
 }
 li > div:nth-child(2) {
   width: 70%;
-
 }
 button {
   border: none;

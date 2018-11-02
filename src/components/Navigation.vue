@@ -6,9 +6,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'nav'
-  }
+export default {
+  name: "nav"
+};
 </script>
 
 <style scoped>
