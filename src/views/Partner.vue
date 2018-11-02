@@ -9,7 +9,7 @@
           <input class="w3-input w3-border" type="text">
         </div>
         <footer class="w3-container">
-          <button class="w3-button w3-round-large w3-blue w3-hover-blue" @click="setName">Submit</button>
+          <button class="w3-button w3-round-large w3-blue w3-hover-blue" @click="setName()">Submit</button>
         </footer>
       </div>
     </div>
@@ -21,9 +21,12 @@
             <img :src="require(`@/assets/avatar/${review['avatar']}`)" class="w3-bar-item w3-circle">
             <div class="w3-bar-item w3-padding-small">
               <span class="w3-large">{{ review['review'] }}</span><br>
-              <span class="w3-small">{{ review['author'] }}</span>
+              <span class="w3-small">{{ review['author'] }} at {{ (new Date(review['timestamp'])).toLocaleString() }}</span><br/>
+              <span class="w3-tag w3-padding-small w3-round w3-center" v-bind:class="getPlatformColor(review['platform'])">
+                {{ review['platform'] }}
+              </span>
             </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
+            <i class="w3-bar-item w3-right fa fa-trash" title="Delete" @click="deleteReview(review)"></i>
           </li>
         </ul>
         <div class="button">
@@ -60,9 +63,12 @@
             <img :src="require(`@/assets/avatar/${review['avatar']}`)" class="w3-bar-item w3-circle">
             <div class="w3-bar-item w3-padding-small">
               <span class="w3-large">{{ review['review'] }}</span><br>
-              <span class="w3-small">{{ review['author'] }}</span>
+              <span class="w3-small">{{ review['author'] }} at {{ (new Date(review['timestamp'])).toLocaleString() }}</span><br/>
+              <span class="w3-tag w3-padding-small w3-round w3-center" v-bind:class="getPlatformColor(review['platform'])">
+                {{ review['platform'] }}
+              </span>
             </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
+            <i class="w3-bar-item w3-right fa fa-trash" title="Delete" @click="deleteReview(review)"></i>
           </li>
         </ul>
         <div class="button">
@@ -99,9 +105,12 @@
             <img :src="require(`@/assets/avatar/${review['avatar']}`)" class="w3-bar-item w3-circle">
             <div class="w3-bar-item w3-padding-small">
               <span class="w3-large">{{ review['review'] }}</span><br>
-              <span class="w3-small">{{ review['author'] }}</span>
+              <span class="w3-small">{{ review['author'] }} at {{ (new Date(review['timestamp'])).toLocaleString() }}</span><br/>
+              <span class="w3-tag w3-padding-small w3-round w3-center" v-bind:class="getPlatformColor(review['platform'])">
+                {{ review['platform'] }}
+              </span>
             </div>
-            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-xlarge w3-right">...</span>
+            <i class="w3-bar-item w3-right fa fa-trash" title="Delete" @click="deleteReview(review)"></i>
           </li>
         </ul>
         <div class="button">
@@ -136,9 +145,9 @@
 </template>
 
 <script>
-import { db } from '../firebase';
+import { db } from "../firebase";
 
-var reviewsRef = db.ref('reviews');
+var reviewsRef = db.ref("reviews");
 
 export default {
   name: 'platform',
@@ -172,42 +181,62 @@ export default {
       var review = document.querySelector(`.${platform} .w3-modal textarea`).value.trim();
       var author = this.username;
       reviewsRef.push({
-        'review': review,
-        'author': author,
-        'avatar': `img_avatar${Math.floor(Math.random() * 5) + 1}.png`,
-        'platform': platform,
-        'timestamp': + new Date()
+        "review": review,
+        "author": author,
+        "avatar": `img_avatar${Math.floor(Math.random() * 5) + 1}.png`,
+        "platform": platform,
+        "timestamp": + new Date()
       });
       this.close(platform);
     },
+    deleteReview(review) {
+      reviewsRef.child(review[".key"]).remove();
+    },
     getCarousellReviews() {
-      return this.reviews.filter(function (review) {
-        console.log(review)
-        return review.platform == 'carousell'
+      var reviews = this.reviews.filter(function(review) {
+        return review.platform == 'carousell';
+      });
+      return reviews.sort(function(a, b) {
+        return b.timestamp - a.timestamp;
       });
     },
     getGrabReviews() {
-      return this.reviews.filter(function (review) {
-        return review.platform == 'grab'
+      var reviews = this.reviews.filter(function(review) {
+        return review.platform == 'grab' || review.platform == 'carousell' || review.platform == 'shopee';
+      });
+      return reviews.sort(function(a, b) {
+        return b.timestamp - a.timestamp;
       });
     },
     getShopeeReviews() {
-      return this.reviews.filter(function (review) {
-        return review.platform == 'shopee'
+      var reviews = this.reviews.filter(function(review) {
+        return review.platform == 'shopee';
+      });
+      return reviews.sort(function(a, b) {
+        return b.timestamp - a.timestamp;
       });
     },
+    getPlatformColor(platform) {
+      return [`${platform}-color`];
+    }
   },
   mounted() {
     setTimeout(function() {
       document.querySelector("span > .w3-modal").style.display = "block";
-      document.querySelector("span > .w3-modal input").focus()
+      document.querySelector("span > .w3-modal input").focus();
     }, 1000)
     window.onclick = function(event) {
-      if (event.target.classList.contains("w3-modal") && event.target.id !== 'prompt') {
+      if (event.target.classList.contains("w3-modal") && event.target.id !== "prompt") {
           event.target.style.display = "none";
           event.target.querySelector("textarea").value = "";
       }
     };
+    document.querySelector("span > .w3-modal input").addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        document.querySelector("span > .w3-modal button").click();
+      }
+    });
   }
 };
 </script>
@@ -233,6 +262,13 @@ textarea {
   height: 145px;
   border: 1px solid #000000;
 }
+.fa {
+  font-size: 20px !important;
+  cursor: pointer;
+}
+.fa:hover {
+  opacity: 0.5;
+}
 .platform {
   display: flex;
   flex-wrap: wrap;
@@ -243,6 +279,8 @@ textarea {
 span > .w3-modal > .w3-modal-content {
   width: 30%;
   height: 45%;
+  min-width: 400px;
+  min-height: 200px;
 }
 span > .w3-modal header {
   text-align: center;
@@ -293,19 +331,26 @@ span > .w3-modal button:hover {
 img.w3-circle {
   width: 85px;
 }
+.w3-bar-item .w3-tag {
+  font-size: 10px;
+  cursor: default;
+}
 .carousell h2,
 .carousell button,
-.carousell header {
+.carousell header,
+.carousell-color {
   background-color: #d2232a;
 }
 .grab h2,
 .grab button,
-.grab header {
+.grab header,
+.grab-color {
   background-color: green;
 }
 .shopee h2,
 .shopee button,
-.shopee header {
+.shopee header,
+.shopee-color {
   background-color: #ff5722;
 }
 .carousell .w3-modal-content,

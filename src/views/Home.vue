@@ -1,13 +1,16 @@
 <template>
   <div class="main">
-    <img class="w3-animate-bottom" alt="Prestige logo" src="../assets/prestige.png">
+    <img class="logo w3-animate-top" alt="Prestige logo" src="../assets/logo-black.png">
     <div class="links">
       <router-link to="/platform" target="_blank">
-        <h1 id="platform" class="w3-animate-right">goto: Partner demo</h1>
+        <h1 id="platform" class="w3-animate-right">Sample Partners</h1>
       </router-link>
       <router-link to="/profile" target="_blank">
-        <h1 id="profile" class="w3-animate-left">goto: Profile demo</h1>
+        <h1 id="profile" class="w3-animate-left">My Profile</h1>
       </router-link>
+    </div>
+    <div class="tagline">
+      <span class="w3-animate-bottom">Your <u>prestige</u>, Our <i>business</i>.</span>
     </div>
   </div>
 </template>
@@ -38,24 +41,33 @@ li {
   text-decoration: none;
   align-self: flex-end;
 }
-.main {
-  background-color: #020202;
-}
 .links {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: fixed;
-  top: 50px;
+  top: 70px;
   right: 0px;
   width: 100%;
 }
+.logo {
+  width: 270px;
+  height: 45px;
+}
+.tagline {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  font-size: 80px;
+}
 #platform {
-  width: 400px;
+  width: 350px;
   background-color: #FFD700;
 }
 #profile {
-  width: 370px;
+  width: 320px;
   background-color: red;
 }
 #platform,
@@ -71,6 +83,6 @@ li {
 #profile:hover
 {
   transition: width 0.3s ease;
-  width: 450px;
+  width: 420px;
 }
 </style>
