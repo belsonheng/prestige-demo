@@ -153,12 +153,13 @@ export default {
   name: "platform",
   data() {
     return {
-      username: null,
-      reviews: []
+      username: null
     };
   },
-  firebase: {
-    reviews: reviewsRef
+  firebase() {
+    return {
+      reviews: reviewsRef
+    };
   },
   methods: {
     setName() {
