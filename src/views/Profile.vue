@@ -4,7 +4,7 @@
       <span class="w3-animate-top">Your <u>prestige</u>, Our <i>business</i>.</span>
     </div>
     <div class="container">
-      <aside class="sidebar">
+      <aside>
         <img class="avatar w3-animate-zoom" alt="Display picture" src="../assets/avatar/avatar7.png" width="200px">
         <div class="accounts w3-animate-bottom">
           <span class="w3-tag w3-padding-small w3-round w3-center carousell-color" @click="option='Carousell'">
@@ -121,15 +121,12 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin: 10px auto;
   padding: 1em;
-  width: 70%;
+  width: 90%;
   height: 100%;
-}
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 23%;
 }
 .accounts {
   margin-top: 10px;
@@ -164,6 +161,7 @@ export default {
 }
 .w3-select {
   height: 3em;
+  margin: 0 auto;
 }
 .tagline {
   width: 100%;
@@ -172,6 +170,9 @@ export default {
   font-size: 80px;
 }
 @media screen and (max-device-width: 480px) {
+  main > div > h1 {
+    text-align: center;
+  }
   .tagline {
     font-size: 2em !important;
   }
@@ -181,6 +182,7 @@ main {
 }
 main > div {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
 }
 main > div > h1 {
@@ -193,7 +195,12 @@ select {
   outline: none;
 }
 aside {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  margin: 0 auto;
   text-align: center;
+  min-width: 200px;
 }
 aside img {
   margin: 0 auto;
