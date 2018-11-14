@@ -8,6 +8,9 @@
       <router-link to="/profile" target="_blank">
         <h1 id="profile" class="w3-animate-left">My Profile</h1>
       </router-link>
+      <a href="https://platformproject.herokuapp.com/api-docs/" target="_blank">
+        <h1 id="api" class="w3-animate-right">API Specifications</h1>
+      </a>
     </div>
     <div class="tagline">
       <span class="w3-animate-bottom">Your <u>prestige</u>, Our <i>business</i>.</span>
@@ -75,8 +78,13 @@ li {
   width: 320px;
   background-color: red;
 }
+#api {
+  width: 380px;
+  background-color: #007fff;
+}
 #platform,
-#profile {
+#profile,
+#api {
   align-self: flex-end;
   padding-left: 40px;
   padding-right: 20px;
@@ -85,7 +93,8 @@ li {
   transition: width 0.2s ease;
 }
 #platform:hover,
-#profile:hover {
+#profile:hover,
+#api:hover {
   transition: width 0.3s ease;
   width: 420px;
 }
